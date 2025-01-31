@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truck Animation Order Button</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .order-button {
+      position: relative;
+      background-color: #4caf50;
+      color: white;
+      padding: 15px 60px;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+
+    .order-button:hover {
+      background-color: #388e3c;
+    }
+
+    .truck {
+      position: absolute;
+      top: 50%;
+      left: -50px;
+      transform: translateY(-50%);
+      width: 40px;
+      animation: none;
+    }
+
+    .truck svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .message {
+      display: none;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 10px;
+      color: #4caf50;
+    }
+
+    /* Animation */
+    @keyframes truck-move {
+      0% {
+        left: -50px;
+      }
+      100% {
+        left: calc(100% + 50px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Order Button -->
+<button class="order-button" id="orderButton">
+  <span class="button-text" id="buttonText">Place Order</span>
+  <span class="truck" id="truck">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M20 8h-3V4H2v16h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h2v-7l-4-5zM6 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm2-9h-4V9h2l2 2z"/>
+    </svg>
+  </span>
+</button>
+
+<!-- Order Placed Message -->
+<div class="message" id="message">🚚 Order Placed Successfully!</div>
+
+<script>
+  const orderButton = document.getElementById('orderButton');
+  const truck = document.getElementById('truck');
+  const buttonText = document.getElementById('buttonText');
+  const message = document.getElementById('message');
+
+  orderButton.addEventListener('click', () => {
+    // Start the truck animation
+    truck.style.animation = 'truck-move 2s linear forwards';
+
+    // Hide the button text during animation
+    buttonText.style.opacity = '0';
+
+    // After the animation completes, show the "Order Placed" message
+    setTimeout(() => {
+      message.style.display = 'block';
+      orderButton.style.display = 'none'; // Hide the button after placing the order
+    }, 2000);
+  });
+</script>
+
+</body>
+</html>

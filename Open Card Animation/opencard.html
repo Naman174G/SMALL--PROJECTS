@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Card Animation</title>
+  <link rel="stylesheet" href="opencard.css">
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">Click to Open</div>
+    <div class="card-content">
+      <h3>Card Content</h3>
+      <p>This is the inside content of the card. It smoothly opens and closes on click!</p>
+    </div>
+  </div>
+
+  <script>
+    const card = document.querySelector('.card');
+    card.addEventListener('click', () => {
+      card.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
